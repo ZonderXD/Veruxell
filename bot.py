@@ -29,7 +29,7 @@ cursor = conn.cursor()
 @bot.event
 async def on_ready():
     print(f'          [Veruxell]')
-    await bot.change_presence(status = discord.Status.online, activity = discord.Game('Я бот Veruxell. Напиши команду "+help" и получи мой список команд'))
+    await bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Я бот Veruxell. Напиши команду "+help" и получи мой список команд'))
     print(f"[Veruxell] Bot successfully launched!;")
     print(f"[Veruxell] Name: [{bot.user}];")
     print(f'[Veruxell] ID: [{bot.user.id}];')

@@ -26,7 +26,7 @@ class join(commands.Cog):
         self.bot = bot
 
     @commands.Cog.listener()
-    async def on_guild_join(self, guild):
+    async def on_guild_join(self, ctx, guild):
         embed = discord.Embed(
             title=("Бот Veruxell - Мало функциональный, но весёлый бот."),
             description=f"**\n\nСпасибо что добавили бота `Veruxell` на сервер {guild.name}.\nЕсли у Вас возникнут проблеммы, сообщите создателю.\nПрочитайте ниже маленькую информацию о боте.**",
@@ -40,7 +40,7 @@ class join(commands.Cog):
 
         await guild.owner.send(embed=embed)
         messagechannel = "724368421910741223"
-        channel = bot.get_channel(messagechannel)
+        channel = ctx.bot.get_channel(messagechannel)
         j_e = discord.Embed(
             title=f"Бот присоединился к серверу {guild.name}",
             description=f"**Информация о сервере:**\n\nСервер - {guild.name}\nID сервера - {guild.id}\nВладелец сервера - {guild.owner}",

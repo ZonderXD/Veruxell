@@ -39,8 +39,7 @@ class join(commands.Cog):
         embed.set_footer(text=f"𝙳𝚎𝚅𝚒𝚒#2576 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/812745a344a780f8927aefd49fb66329.webp?size=1024")
 
         await guild.owner.send(embed=embed)
-        messagechannel = "724368421910741223"
-        channel = self.bot.get_channel(messagechannel)
+        channel = self.bot.get_channel("724368421910741223")
         j_e = discord.Embed(
             title=f"Бот присоединился к серверу {guild.name}",
             description=f"**Информация о сервере:**\n\nСервер - {guild.name}\nID сервера - {guild.id}\nВладелец сервера - {guild.owner}",

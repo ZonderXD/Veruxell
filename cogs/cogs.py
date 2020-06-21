@@ -25,13 +25,9 @@ class cogs(commands.Cog):
     def init(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def cog(self,ctx):
-        await ctx.send(f"Коги успешно работают!")
-
     @commands.Cog.listener()
     async def on_ready (self):
-        print('[Noxus] Cogs successfully uploaded!')
+        print('[Veruxell] Cogs successfully uploaded!')
         print('[------------------------------]')
         print(f'          [Other]')
 

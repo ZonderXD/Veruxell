@@ -29,7 +29,7 @@ cursor = conn.cursor()
 @bot.event
 async def on_ready():
     print(f'          [Veruxell]')
-    await bot.change_presence(status = discord.Status.idle, activity = discord.Game('Я бот Veruxell. Напиши команду "+help" и получи мой список команд'))
+    await bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Я бот Veruxell. Напиши команду "+help" и получи мой список команд'))
     print(f"[Veruxell] Bot successfully launched!;")
     print(f"[Veruxell] Name: [{bot.user}];")
     print(f'[Veruxell] ID: [{bot.user.id}];')
@@ -152,7 +152,7 @@ async def help(ctx):
 
 @bot.command()
 async def invite(ctx):
-    await ctx.send(embed = discord.Embed(description = f"{ctx.author.mention}\nhttps://discord.com/oauth2/authorize?client_id=722389231917334588&scope=bot&permissions=980937982", color=0x6fdb9e))
+    await ctx.send(embed = discord.Embed(description = f"https://discord.com/oauth2/authorize?client_id=722389231917334588&scope=bot&permissions=980937982", color=0x6fdb9e))
 
 @bot.command()
 async def wiki(ctx, *, text):

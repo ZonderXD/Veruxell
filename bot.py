@@ -32,7 +32,7 @@ async def on_ready():
     await bot.change_presence(status = discord.Status.idle, activity = discord.Game('Я бот Veruxell. Напиши команду "+help" и получи мой список команд'))
     print(f"[Veruxell] Bot successfully launched!;")
     print(f"[Veruxell] Name: [{bot.user}];")
-    print(f'[Veruxell] ID: [{bot.user.id}]')
+    print(f'[Veruxell] ID: [{bot.user.id}];')
 
 def owner(ctx):
     return ctx.message.author.id == 719605055547768894

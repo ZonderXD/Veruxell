@@ -29,7 +29,7 @@ class join(commands.Cog):
     async def on_guild_join(self, ctx, guild):
         embed = discord.Embed(
             title=("Бот Veruxell - Мало функциональный, но весёлый бот."),
-            description=f"**\n\nСпасибо что добавили бота `Veruxell` на сервер {guild.name}.\nЕсли у Вас возникнут проблеммы, сообщите создателю.\nПрочитайте ниже маленькую информацию о боте.**",
+            description=f"**\nСпасибо что добавили бота `Veruxell` на сервер {guild.name}.\nЕсли у Вас возникнут проблеммы, сообщите создателю.\nПрочитайте ниже маленькую информацию о боте.**",
             color=0x800080
         )
         embed.add_field(

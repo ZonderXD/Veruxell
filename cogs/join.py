@@ -28,8 +28,8 @@ class join(commands.Cog):
     @commands.Cog.listener()
     async def on_guild_join(self, guild):
         embed = discord.Embed(
-            title=("Veruxell"),
-            description=f"Добрый день!\n\n Вы получили это сообщение т.к на ваш сервер **{guild.name}** был добавлен Veruxell.\nЭто чисто информативное сообщение, сделанное для того, чтобы вы знали немного больше о том, чем пользуетесь.",
+            title=("Бот Veruxell - Мало функциональный, но весёлый бот."),
+            description=f"**\n\nСпасибо что добавили бота `Veruxell` на сервер {guild.name}.\nЕсли у Вас возникнут проблеммы, сообщите создателю.\nПрочитайте ниже маленькую информацию о боте.**",
             color=0x800080
         )
         embed.add_field(
@@ -39,8 +39,8 @@ class join(commands.Cog):
         embed.set_footer(text=f"𝙳𝚎𝚅𝚒𝚒#2576 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/812745a344a780f8927aefd49fb66329.webp?size=1024")
 
         await guild.owner.send(embed=embed)
-        channel_id = 724368421910741223
-        channel = self.bot.get_channel(channel_id)
+        messagechannel = "724368421910741223"
+        channel = bot.get_channel(messagechannel)
         j_e = discord.Embed(
             title=f"Бот присоединился к серверу {guild.name}",
             description=f"**Информация о сервере:**\n\nСервер - {guild.name}\nID сервера - {guild.id}\nВладелец сервера - {guild.owner}",

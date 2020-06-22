@@ -42,8 +42,8 @@ class join(commands.Cog):
         messagechannel = 724368421910741223
         channel = self.bot.get_channel(messagechannel)
         hi = discord.Embed(
-            title=f"Бот присоединился к серверу {guild.name}",
-            description=f"**Информация о сервере:**\n\nСервер - {guild.name}\nID сервера - {guild.id}\nВладелец сервера - {guild.owner}",
+            title=f"Бот присоединился к серверу.",
+            description=f"**💡 Информация о сервере:\n\n📢 Название сервера - `{guild.name}`\n🎲 ID сервера - `{guild.id}`\n👑 Владелец сервера - `{guild.owner}`**",
         )
         await channel.send(embed=hi)
 

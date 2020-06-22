@@ -22,7 +22,7 @@ from Cybernator import Paginator
 
 class join(commands.Cog):
 
-    def init(self, bot):
+    def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()

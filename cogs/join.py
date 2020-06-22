@@ -44,6 +44,7 @@ class join(commands.Cog):
         hi = discord.Embed(
             title=f"Бот присоединился к серверу.",
             description=f"**💡 Информация о сервере:\n\n📢 Название сервера - `{guild.name}`\n🎲 ID сервера - `{guild.id}`\n👑 Владелец сервера - `{guild.owner}`**",
+            color=0x800080
         )
         await channel.send(embed=hi)
 

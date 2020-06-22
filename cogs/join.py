@@ -36,7 +36,7 @@ class join(commands.Cog):
             name="Полезная информация:",
             value=f"**Сервер создателя бота - [клик](https://discord.gg/XT5E8ft)\nСоздатель бота - `𝙳𝚎𝚅𝚒𝚒#2576`\nПрефикс бота - `+`\nПомощь по командам - `+help`**"
         )
-        embed.set_footer(text=f"𝙳𝚎𝚅𝚒𝚒#2576 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/812745a344a780f8927aefd49fb66329.webp?size=1024")
+        embed.set_footer(text=f"𝙳𝚎𝚅𝚒𝚒#2576 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/a_c2e9abd558cd2d4aee76473cb06f30d7.gif?size=1024")
 
         await guild.owner.send(embed=embed)
         messagechannel = 724368421910741223

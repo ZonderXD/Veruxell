@@ -15,6 +15,9 @@ import sys
 import traceback
 import youtube_dl
 from mod import *
+import cv2
+import qrcode
+from pyzbar import pyzbar
 from discord.ext import commands
 from discord.utils import get
 from yandex_music import Client
@@ -143,12 +146,96 @@ async def kill(ctx, member : discord.Member = None):
 async def help(ctx):
     embed1 = discord.Embed(title = '⚙ Навигация по командам:\n 🦴 Чтоб посмотреть команды, нажимайте на реакции ниже.\n ❗ Обязательные параметры: `()`\n ❓ Необязательные параметры: `[]`', color=0x6fdb9e )
     embed2 = discord.Embed(title ='💎 Базовые:', description='**``+user [@user]`` - Узнать информацию о пользователе 🎭\n ``+server`` - Узнать информацию о сервере 🧿\n `+bot` - Информация о боте 🤖\n `+avatar [@user]` - Аватар пользователя 🖼\n `+wiki (text)` - Википедия 📖\n `+covid (country)` - Информация о вирусе Covid-19 🦠\n `+invite` - Приглашение бота 👻**', color=0x6fdb9e )
-    embed3 = discord.Embed(title ='🎉 Весёлости:', description='**``+coin`` - Бросить монетку 🌈\n ``+math (2*2/2+2-2)`` - Решить пример :infinity:\n `+8ball (question)` - Волшебный шар 🔮\n `+meme` - Рандомный мем 🤣\n `+sapper` - Типичный сапёр ♻\n `+ttt (user)` - Крестики-нолики ⭕\n `+bunting` - Угадай флаг 🏴**', color=0x6fdb9e)
+    embed3 = discord.Embed(title ='🎉 Весёлости:', description='**``+coin`` - Бросить монетку 🌈\n ``+math (2*2/2+2-2)`` - Решить пример :infinity:\n `+8ball (question)` - Волшебный шар 🔮\n `+meme` - Рандомный мем 🤣\n `+sapper` - Типичный сапёр ♻\n `+ttt (user)` - Крестики-нолики ⭕\n `+bunting` - Угадай флаг 🏴\n `+qr (text)` - Зашифровать в QR код сообщение 🎴\n `+scan_url (url)` - Сканировать QR код по ссылке 🕹\n `+scan (image)` - Сканировать QR код по картинке 🕹**', color=0x6fdb9e)
     embed4 = discord.Embed(title ='💋 Некос:', description='**`+hug (@user)` - Обнять 😜\n `+slap (@user)` - Ударить 😡\n `+kill [@user]` - Убить 🔪\n `+dog` - Собака :dog:\n `+goose` - Гусь :duck:\n `+cat` - Кот 🐱**', color=0x6fdb9e)
     embeds = [embed1, embed2, embed3, embed4]
     message = await ctx.send(embed=embed1)
     page = Paginator(bot, message, only=ctx.author, use_more=False, embeds=embeds, reactions = ['⬅', '➡'])
     await page.start()
+
+@bot.command()
+async def qr(ctx, *, arg):
+    v = arg
+    img = qrcode.make(v)
+
+
+    qr_there = os.path.isfile('myqr.jpg')
+
+    try:
+        if qr_there:
+            os.remove('myqr.jpg')
+            print('...Rem...')
+    except PermissionError:
+        print('...GG...')
+
+
+    img.save('myqr.jpg')
+    await ctx.send(file=discord.File('myqr.jpg'))
+
+@bot.command()
+async def scan(ctx):
+    try:
+        qr_there = os.path.isfile('qr.png')
+        try:
+            if qr_there:
+                os.remove('qr.png')
+                print('...Rem...')
+        except PermissionError:
+            print('...GG...')
+
+        attachment = ctx.message.attachments[0]
+        url = attachment.url
+        ddd = requests.get(url)
+        img_file = open('qr.png', 'wb')
+        img_file.write(ddd.content)
+        img_file.close() 
+
+
+
+    
+        img = cv2.imread('qr.png')
+        bs = pyzbar.decode(img)
+
+        for barcode in bs:
+            bd = barcode.data.decode('utf-8')
+            await ctx.send(bd)
+    except Exception as e:
+        await ctx.send('***Похоже вы не прикрепили изображение с qr-кодом***')
+
+
+
+
+@bot.command()
+async def scan_url(ctx, arg):
+    try:
+        qr_there = os.path.isfile('qr_url.png')
+        try:
+            if qr_there:
+                os.remove('qr_url.png')
+                print('...Rem...')
+        except PermissionError:
+            print('...GG...')
+
+
+        url = arg
+        ddd = requests.get(url)
+        img_file = open('qr_url.png', 'wb')
+        img_file.write(ddd.content)
+        img_file.close() 
+
+
+
+
+        img = cv2.imread('qr_url.png')
+        bs = pyzbar.decode(img)
+        for barcode in bs:
+            bd = barcode.data.decode('utf-8')
+            await ctx.send(bd)
+
+
+
+    except Exception as e:
+        await ctx.send('***Похоже вы не прикрепили ссылку с qr-кодом***')
 
 @bot.command()
 async def invite(ctx):

@@ -83,7 +83,7 @@ async def botinfo(ctx):
     embed.add_field(name=f'**Версия:**', value="V1.0.0", inline=False)  # Создает строку
     embed.add_field(name=f'**Патч:**', value="1", inline=False)  # Создает строку
     embed.set_thumbnail( url = bot.user.avatar_url)
-    embed.set_footer(text=f"𝙳𝚎𝚅𝚒𝚒#2576 © | Все права защищены", icon_url='https://cdn.discordapp.com/avatars/719605055547768894/812745a344a780f8927aefd49fb66329.webp?size=1024') # создаение футера
+    embed.set_footer(text=f"𝙳𝚎𝚅𝚒𝚒#2576 © | Все права защищены", icon_url='https://cdn.discordapp.com/avatars/719605055547768894/a_c2e9abd558cd2d4aee76473cb06f30d7.gif?size=1024') # создаение футера
     await ctx.send(embed=embed)
 
 @bot.command() # Декоратор команды

@@ -74,6 +74,18 @@ async def meme(ctx):
     emb.set_image(url= random_meme())
     await ctx.send(embed=emb)
 
+@bot.command()
+async def suggest( ctx , * , agr ):
+    await ctx.message.add_reaction('<a:Yes:719995062095839366>')
+    suggest_chanell = bot.get_channel( 725368999415906424 ) #Айди канала предложки
+    embed = discord.Embed(title=f"Новое предложение:", description= f"{ctx.author.mention} предложил: **{agr}** \n\n")
+
+    embed.set_thumbnail(url=ctx.guild.icon_url)
+
+    message = await suggest_chanell.send(embed=embed)
+    await message.add_reaction('<a:Yes:719995062095839366>')
+    await message.add_reaction('<a:No:719995078059229336>')
+
 @bot.command(aliases=['bot'])
 async def botinfo(ctx):
     embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Veruxell#7065**.\n Я был сделан для Вашего удобства,\n Подробнее о командах: **`+help`**", color = 0x00ffff)
@@ -95,7 +107,7 @@ async def ran_avatar(ctx): # Название команды
 @bot.command() # Декоратор команды
 async def slap(ctx, member : discord.Member): # Название команды и аргумент
     if member == ctx.message.author: # Проверка кого упомянули
-        await ctx.send('Вы не можете ударить сами себя.')
+        await ctx.send('<a:No:719995078059229336> Вы не можете ударить сами себя.')
     else:
         emb = discord.Embed(description= f'{member.mention}, Вас ударил(-а) {ctx.message.author.mention}.', color=0x6fdb9e) # Переменная ембеда и описание
         emb.set_image(url=nekos.img('slap')) # Ищем картинку и ставим её в ембед
@@ -119,7 +131,7 @@ async def dog(ctx): # Название команды и аргумент
 @bot.command() # Декоратор команды
 async def hug(ctx, member : discord.Member): # Название команды и аргумент
     if member == ctx.message.author: # Проверка кого упомянули
-        await ctx.send('Вы не можете обнять сами себя.')
+        await ctx.send('<a:No:719995078059229336> Вы не можете обнять сами себя.')
     else:
         emb = discord.Embed(description= f'{member.mention}, Вас обнял(-а) {ctx.message.author.mention}.', color=0x6fdb9e) # Переменная ембеда и описание
         emb.set_image(url=nekos.img('hug')) # Ищем картинку и ставим её в ембед
@@ -142,13 +154,13 @@ async def kill(ctx, member : discord.Member = None):
 @bot.command()
 async def help(ctx):
     embed1 = discord.Embed(title = '⚙ Навигация по командам:\n 🦴 Чтоб посмотреть команды, нажимайте на реакции ниже.\n ❗ Обязательные параметры: `()`\n ❓ Необязательные параметры: `[]`', color=0x6fdb9e )
-    embed2 = discord.Embed(title ='💎 Базовые:', description='**``+user [@user]`` - Узнать информацию о пользователе 🎭\n ``+server`` - Узнать информацию о сервере 🧿\n `+bot` - Информация о боте 🤖\n `+avatar [@user]` - Аватар пользователя 🖼\n `+wiki (text)` - Википедия 📖\n `+covid (country)` - Информация о вирусе Covid-19 🦠\n `+invite` - Приглашение бота 👻**', color=0x6fdb9e )
+    embed2 = discord.Embed(title ='💎 Базовые:', description='**``+user [@user]`` - Узнать информацию о пользователе 🎭\n ``+server`` - Узнать информацию о сервере 🧿\n `+bot` - Информация о боте 🤖\n `+avatar [@user]` - Аватар пользователя 🖼\n `+wiki (text)` - Википедия 📖\n `+covid (country)` - Информация о вирусе Covid-19 🦠\n `+invite` - Приглашение бота 👻\n `+suggest (text)` - Идея для бота **', color=0x6fdb9e )
     embed3 = discord.Embed(title ='🎉 Весёлости:', description='**``+coin`` - Бросить монетку 🌈\n ``+math (2*2/2+2-2)`` - Решить пример :infinity:\n `+8ball (question)` - Волшебный шар 🔮\n `+meme` - Рандомный мем 🤣\n `+sapper` - Типичный сапёр ♻\n `+ttt (user)` - Крестики-нолики ⭕\n `+bunting` - Угадай флаг 🏴**', color=0x6fdb9e)
     embed4 = discord.Embed(title ='🧊 Для админов:', description='**`+say (text)` - Написать текст от лица бота ⚖**', color=0x6fdb9e)
     embed5 = discord.Embed(title ='💋 Некос:', description='**`+hug (@user)` - Обнять 😜\n `+slap (@user)` - Ударить 😡\n `+kill [@user]` - Убить 🔪\n `+dog` - Собака :dog:\n `+goose` - Гусь :duck:\n `+cat` - Кот 🐱**', color=0x6fdb9e)
     embeds = [embed1, embed2, embed3, embed4, embed5]
     message = await ctx.send(embed=embed1)
-    page = Paginator(bot, message, only=ctx.author, use_more=False, embeds=embeds, reactions = ['⬅', '➡'])
+    page = Paginator(bot, message, only=ctx.author, use_more=False, embeds=embeds, reactions = ['<a:Left:720717981499261008>', '<a:Right:720717967343485020>'])
     await page.start()
 
 @bot.command()
@@ -267,20 +279,20 @@ async def server(ctx):
     allroles = len(ctx.guild.roles)
     embed = discord.Embed(title=f"Сервер: `{ctx.guild.name}`", color=0xff0000, timestamp=ctx.message.created_at)
     embed.description=(
-        f"⏰ **Сервер создали: `{ctx.guild.created_at.strftime('%A, %b %#d %Y')}`**\n\n"
-        f"🧀 **Регион: `{ctx.guild.region}`**\n\n"
-        f"🤠 **Глава сервера: `{ctx.guild.owner}`**\n\n"
-        f"🤖 **Ботов на сервере: `{len([m for m in members if m.bot])}`**\n\n"
-        f"🍏 **Онлайн: `{online}`**\n\n"
-        f"⚪ **Оффлайн: `{offline}`**\n\n"
-        f"🌙 **Отошли: `{idle}`**\n\n"
-        f"🎈 **Не трогать: `{dnd}`**\n\n"
-        f"🛡 **Уровень верификации: `{ctx.guild.verification_level}`**\n\n"
-        f"🎢 **Всего каналов: `{allchannels}`**\n\n"
-        f"🔊 **Голосовых каналов: `{allvoice}`**\n\n"
-        f"🎪 **Текстовых каналов: `{alltext}`**\n\n"
-        f"🎃 **Всего ролей: `{allroles}`**\n\n"
-        f"😀 **Людей на сервере: `{ctx.guild.member_count}`**\n\n"
+        f"<a:Time:719996484237656215> **Сервер создали: `{ctx.guild.created_at.strftime('%A, %b %#d %Y')}`**\n\n"
+        f"<:Region:719996506857406525> **Регион: `{ctx.guild.region}`**\n\n"
+        f"<:Owner:720001653163425822> **Глава сервера: `{ctx.guild.owner}`**\n\n"
+        f"<:Bot:719996225453162618> **Ботов на сервере: `{len([m for m in members if m.bot])}`**\n\n"
+        f"<:Online:719996334546878494> **Онлайн: `{online}`**\n\n"
+        f"<:Offline:719996377865912342> **Оффлайн: `{offline}`**\n\n"
+        f"<:Idle:719996278196666439> **Отошли: `{idle}`**\n\n"
+        f"<:Dnd:719996257330004019> **Не трогать: `{dnd}`**\n\n"
+        f"<:Shield:719996523823366195> **Уровень верификации: `{ctx.guild.verification_level}`**\n\n"
+        f"<:Channels:719996243228753921> **Всего каналов: `{allchannels}`**\n\n"
+        f"<:VoiceChannel:719996462305509386> **Голосовых каналов: `{allvoice}`**\n\n"
+        f"<:TextChannel:719996437676425358> **Текстовых каналов: `{alltext}`**\n\n"
+        f"<a:Roles:719996398044708945> **Всего ролей: `{allroles}`**\n\n"
+        f"<:Members:719996296827764786> **Людей на сервере: `{ctx.guild.member_count}`**\n\n"
     )
 
     embed.set_thumbnail(url=ctx.guild.icon_url)

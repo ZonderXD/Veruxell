@@ -34,12 +34,12 @@ class join(commands.Cog):
         )
         embed.add_field(
             name="Полезная информация:",
-            value=f"**Сервер создателя бота - [клик](https://discord.gg/XT5E8ft)\nСоздатель бота - `𝙳𝚎𝚅𝚒𝚒#0001`\nПрефикс бота - `+`\nПомощь по командам - `+help`**"
+            value=f"**Сервер создателя бота - [клик](https://discord.gg/4GFQwcN)\nСоздатель бота - `𝙳𝚎𝚅𝚒𝚒#0001`\nПрефикс бота - `+`\nПомощь по командам - `+help`**"
         )
-        embed.set_footer(text=f"𝙳𝚎𝚅𝚒𝚒#2576 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/a_c2e9abd558cd2d4aee76473cb06f30d7.gif?size=1024")
+        embed.set_footer(text=f"𝙳𝚎𝚅𝚒𝚒#0001 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/a_aa12461027eb531e7207f8e9ac7bbdf7.gif?size=1024")
 
         await guild.owner.send(embed=embed)
-        messagechannel = 724368421910741223
+        messagechannel = 725284992221052928
         channel = self.bot.get_channel(messagechannel)
         hi = discord.Embed(
             title=f"Бот присоединился к серверу.",

@@ -28,7 +28,7 @@ cursor = conn.cursor()
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(status = discord.Status.idle, activity = discord.Game('Я бот Veruxell, напиши "+help" и получи список моих команд'))
+    await bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Я бот Veruxell, напиши "+help" и получи список моих команд'))
     print(f'          [Veruxell]')
     print(f"[Veruxell] Bot successfully launched!;")
     print(f"[Veruxell] Name: [{bot.user}];")
@@ -144,8 +144,9 @@ async def help(ctx):
     embed1 = discord.Embed(title = '⚙ Навигация по командам:\n 🦴 Чтоб посмотреть команды, нажимайте на реакции ниже.\n ❗ Обязательные параметры: `()`\n ❓ Необязательные параметры: `[]`', color=0x6fdb9e )
     embed2 = discord.Embed(title ='💎 Базовые:', description='**``+user [@user]`` - Узнать информацию о пользователе 🎭\n ``+server`` - Узнать информацию о сервере 🧿\n `+bot` - Информация о боте 🤖\n `+avatar [@user]` - Аватар пользователя 🖼\n `+wiki (text)` - Википедия 📖\n `+covid (country)` - Информация о вирусе Covid-19 🦠\n `+invite` - Приглашение бота 👻**', color=0x6fdb9e )
     embed3 = discord.Embed(title ='🎉 Весёлости:', description='**``+coin`` - Бросить монетку 🌈\n ``+math (2*2/2+2-2)`` - Решить пример :infinity:\n `+8ball (question)` - Волшебный шар 🔮\n `+meme` - Рандомный мем 🤣\n `+sapper` - Типичный сапёр ♻\n `+ttt (user)` - Крестики-нолики ⭕\n `+bunting` - Угадай флаг 🏴**', color=0x6fdb9e)
-    embed4 = discord.Embed(title ='💋 Некос:', description='**`+hug (@user)` - Обнять 😜\n `+slap (@user)` - Ударить 😡\n `+kill [@user]` - Убить 🔪\n `+dog` - Собака :dog:\n `+goose` - Гусь :duck:\n `+cat` - Кот 🐱**', color=0x6fdb9e)
-    embeds = [embed1, embed2, embed3, embed4]
+    embed4 = discord.Embed(title ='🧊 Для админов:', description='**`+say (text)` - Написать текст от лица бота ⚖**', color=0x6fdb9e)
+    embed5 = discord.Embed(title ='💋 Некос:', description='**`+hug (@user)` - Обнять 😜\n `+slap (@user)` - Ударить 😡\n `+kill [@user]` - Убить 🔪\n `+dog` - Собака :dog:\n `+goose` - Гусь :duck:\n `+cat` - Кот 🐱**', color=0x6fdb9e)
+    embeds = [embed1, embed2, embed3, embed4, embed5]
     message = await ctx.send(embed=embed1)
     page = Paginator(bot, message, only=ctx.author, use_more=False, embeds=embeds, reactions = ['⬅', '➡'])
     await page.start()

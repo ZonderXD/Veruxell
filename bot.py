@@ -77,7 +77,7 @@ async def meme(ctx):
 @bot.command()
 async def suggest( ctx , * , agr ):
     await ctx.message.add_reaction('<a:Yes:719995062095839366>')
-    suggest_chanell = bot.get_channel( 725368999415906424 ) #Айди канала предложки
+    suggest_chanell = bot.get_channel( 725476146627739698 ) #Айди канала предложки
     embed = discord.Embed(title=f"Новое предложение:", description= f"{ctx.author.mention} предложил: **{agr}** \n\n")
 
     embed.set_thumbnail(url=ctx.guild.icon_url)

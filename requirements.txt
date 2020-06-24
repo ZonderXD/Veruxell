@@ -10,3 +10,4 @@ yandex-music
 PyNaCl
 discord.py[voice]
 ffmpeg
+jishaku

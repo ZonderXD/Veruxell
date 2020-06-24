@@ -20,8 +20,6 @@ from discord.utils import get
 from yandex_music import Client
 from Cybernator import Paginator
 
-bot.load_extension('jishaku')
-
 bot = commands.Bot(command_prefix='+')
 bot.remove_command('help')
 

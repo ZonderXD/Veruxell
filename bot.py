@@ -33,11 +33,11 @@ async def on_ready():
     print(f"[Veruxell] Name: [{bot.user}];")
     print(f'[Veruxell] ID: [{bot.user.id}];')
     while True:
-        await bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Я бот Veruxell. Напиши команду "+help" и получи мой список команд'))
+        await bot.change_presence(status = discord.Status.dnd, activity = discord.Game('напиши команду "+help" и получи мой список команд'))
         await asyncio.sleep(3)
         await bot.change_presence(status = discord.Status.dnd, activity = discord.Activity(type = discord.ActivityType.watching, name="за серверами"))
         await asyncio.sleep(3)
-        await bot.change_presence(status = discord.Status.dnd, activity = discord.Activity(type = discord.ActivityType.listening, name = "𝙳𝚎𝚅𝚒𝚒#0001 создатель"))
+        await bot.change_presence(status = discord.Status.dnd, activity = discord.Activity(type = discord.ActivityType.listening, name = "пользователей в voice каналах"))
 
 def owner(ctx):
     return ctx.message.author.id == 719605055547768894

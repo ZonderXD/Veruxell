@@ -51,19 +51,6 @@ async def unload(ctx, extension):
 
 @bot.command()
 @commands.check(owner)
-async def dm(ctx):
-    guild = ctx.guild
-    members = guild.members
-    for i in members:
-        if i is not Bot.user:
-            await asyncio.sleep(0.1)
-            try:
-                await i.send(embed = discord.Embed(description = f'**Сервер бота: https://discord.gg/4GFQwcN **', color = 0x00ffff))
-            except:
-                pass
-
-@bot.command()
-@commands.check(owner)
 async def reload(ctx, extension):
     bot.reload_extension(f'cogs.{extension}')
     await ctx.send(embed = discord.Embed(description = f"**{ctx.author.mention}, модуль `{extension}` был успешно перезагружен!**", color = 0x00ffff))

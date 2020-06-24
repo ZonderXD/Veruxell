@@ -28,14 +28,11 @@ cursor = conn.cursor()
 
 @bot.event
 async def on_ready():
+    await bot.change_presence(status = discord.Status.idle, activity = discord.Game('Я бот Veruxell, напиши "+help" и получи список моих команд'))
     print(f'          [Veruxell]')
     print(f"[Veruxell] Bot successfully launched!;")
     print(f"[Veruxell] Name: [{bot.user}];")
     print(f'[Veruxell] ID: [{bot.user.id}];')
-    while True:
-        await bot.change_presence(status = discord.Status.dnd, activity = discord.Game('напиши команду "+help" и получи мой список команд'))
-        await asyncio.sleep(3)
-        await bot.change_presence(status = discord.Status.dnd, activity = discord.Activity(type = discord.ActivityType.watching, name="за серверами"))
 
 def owner(ctx):
     return ctx.message.author.id == 719605055547768894
@@ -250,6 +247,11 @@ async def __count(ctx, *, args = None):
     else:
         result = eval(args)
         await ctx.send(embed = discord.Embed(description = f'Результат примера: `{args}`: \n`{result}`', color = 0x39d0d6))
+
+@bot.command()
+@commands.has_permissions( administrator = True)
+async def say(ctx, *, arg):
+    await ctx.send(f'{arg}')
 
 @bot.command()
 async def server(ctx):

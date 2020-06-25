@@ -43,10 +43,21 @@ class join(commands.Cog):
         channel = self.bot.get_channel(messagechannel)
         hi = discord.Embed(
             title=f"Бот присоединился к серверу.",
-            description=f"**💡 Информация о сервере:\n\n📢 Название сервера - `{guild.name}`\n🎲 ID сервера - `{guild.id}`\n👑 Владелец сервера - `{guild.owner}`**",
+            description=f"**<a:Nitro:719995105016021142> Информация о сервере:\n\n<a:Cat:719995005111894118> Название сервера - `{guild.name}`\n<a:Discord:719995167096176734> ID сервера - `{guild.id}`\n<:Owner:720001653163425822> Владелец сервера - `{guild.owner}`**",
             color=0x800080
         )
         await channel.send(embed=hi)
+
+    @commands.Cog.listener()
+    async def on_guild_remove(self, guild):
+        messagechannel = 725284992221052928
+        channel = self.bot.get_channel(messagechannel)
+        buy = discord.Embed(
+            title=f"Бот отсоиденился от сервера.",
+            description=f"**<a:Nitro:719995105016021142> Информация о сервере:\n\n<a:Cat:719995005111894118> Название сервера - `{guild.name}`\n<a:Discord:719995167096176734> ID сервера - `{guild.id}`\n<:Owner:720001653163425822> Владелец сервера - `{guild.owner}`**",
+            color=0x800080
+        )
+        await channel.send(embed=buy)
 
 def setup(bot):
     bot.add_cog(join(bot))

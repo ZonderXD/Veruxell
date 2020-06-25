@@ -89,13 +89,13 @@ async def suggest( ctx , * , agr ):
 @bot.command(aliases=['bot'])
 async def botinfo(ctx):
     embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Veruxell#7065**.\n Я был сделан для Вашего удобства,\n Подробнее о командах: **`+help`**", color = 0x00ffff)
-    embed.add_field(name=f'**Меня создал:**', value="`𝙳𝚎𝚅𝚒𝚒#2576`(<@719605055547768894>)", inline=False)  # Создает строку
+    embed.add_field(name=f'**Меня создал:**', value="`𝙳𝚒𝙻𝚊𝚇#6666`(<@719605055547768894>)", inline=False)  # Создает строку
     embed.add_field(name=f'**Лицензия:**', value="DiscordHosting-V3.5.7", inline=False)  # Создает строку
     embed.add_field(name=f'**Я написан на:**', value="Discord.py", inline=False)  # Создает строку
     embed.add_field(name=f'**Версия:**', value="V1.0.0", inline=False)  # Создает строку
     embed.add_field(name=f'**Патч:**', value="1", inline=False)  # Создает строку
     embed.set_thumbnail( url = bot.user.avatar_url)
-    embed.set_footer(text=f"𝙳𝚎𝚅𝚒𝚒#0001 © | Все права защищены", icon_url='https://images-ext-2.discordapp.net/external/aG57bbNaBWGzWFKnOUw9M4cbfCO6Cdn4ZJse2NlY9rk/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/719605055547768894/a_aa12461027eb531e7207f8e9ac7bbdf7.gif') # создаение футера
+    embed.set_footer(text=f"𝙳𝚒𝙻𝚊𝚇#6666 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/a_df4795a8f60fe1ee9dded63559128724.gif?size=1024")
     await ctx.send(embed=embed)
 
 @bot.command() # Декоратор команды

@@ -28,11 +28,11 @@ cursor = conn.cursor()
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Я бот Veruxell, напиши "+help" и получи список моих команд'))
-    print(f'          [Veruxell]')
-    print(f"[Veruxell] Bot successfully launched!;")
-    print(f"[Veruxell] Name: [{bot.user}];")
-    print(f'[Veruxell] ID: [{bot.user.id}];')
+    await bot.change_presence(status = discord.Status.dnd, activity = discord.Game('Я бот Lyrics, напиши "+help" и получи список моих команд'))
+    print(f'          [Lyrics]')
+    print(f"[Lyrics] Bot successfully launched!;")
+    print(f"[Lyrics] Name: [{bot.user}];")
+    print(f'[Lyrics] ID: [{bot.user.id}];')
 
 def owner(ctx):
     return ctx.message.author.id == 719605055547768894
@@ -88,7 +88,7 @@ async def suggest( ctx , * , agr ):
 
 @bot.command(aliases=['bot'])
 async def botinfo(ctx):
-    embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Veruxell#7065**.\n Я был сделан для Вашего удобства,\n Подробнее о командах: **`+help`**", color = 0x00ffff)
+    embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Lyrics#7065**.\n Я был сделан для Вашего удобства,\n Подробнее о командах: **`+help`**", color = 0x00ffff)
     embed.add_field(name=f'**Меня создал:**', value="`Needly#0001`(<@719605055547768894>)", inline=False)  # Создает строку
     embed.add_field(name=f'**Лицензия:**', value="DiscordHosting-V3.5.7", inline=False)  # Создает строку
     embed.add_field(name=f'**Я написан на:**', value="Discord.py", inline=False)  # Создает строку

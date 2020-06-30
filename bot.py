@@ -154,7 +154,7 @@ async def kill(ctx, member : discord.Member = None):
 @bot.command()
 async def help(ctx):
     embed1 = discord.Embed(title = '⚙ Навигация по командам:\n 🦴 Чтоб посмотреть команды, нажимайте на реакции ниже.\n ❗ Обязательные параметры: `()`\n ❓ Необязательные параметры: `[]`', color=0x6fdb9e )
-    embed2 = discord.Embed(title ='💎 Базовые:', description='**``+user [@user]`` - Узнать информацию о пользователе 🎭\n ``+server`` - Узнать информацию о сервере 🧿\n `+bot` - Информация о боте 🤖\n `+avatar [@user]` - Аватар пользователя 🖼\n `+wiki (text)` - Википедия 📖\n `+covid (country)` - Информация о вирусе Covid-19 🦠\n `+invite` - Приглашение бота 👻\n `+suggest (text)` - Идея для бота 🎪**', color=0x6fdb9e )
+    embed2 = discord.Embed(title ='💎 Базовые:', description='**``+user [@user]`` - Узнать информацию о пользователе 🎭\n ``+server`` - Узнать информацию о сервере 🧿\n `+bot` - Информация о боте 🤖\n `+avatar [@user]` - Аватар пользователя 🖼\n `+wiki (text)` - Википедия 📖\n `+covid (country)` - Информация о вирусе Covid-19 🦠\n `+invite` - Приглашение бота 👻\n `+suggest (text)` - Идея для бота 🎪\n `+feedback (text)` - Добавить отзыв 📦**', color=0x6fdb9e )
     embed3 = discord.Embed(title ='🎉 Весёлости:', description='**``+coin`` - Бросить монетку 🌈\n ``+math (2*2/2+2-2)`` - Решить пример :infinity:\n `+8ball (question)` - Волшебный шар 🔮\n `+meme` - Рандомный мем 🤣\n `+sapper` - Типичный сапёр ♻\n `+ttt (user)` - Крестики-нолики ⭕\n `+bunting` - Угадай флаг 🏴**', color=0x6fdb9e)
     embed4 = discord.Embed(title ='🧊 Для админов:', description='**`+say (text)` - Написать текст от лица бота ⚖\n `+say_embed (text)` - Сообщение от лица бота в другом стиле **', color=0x6fdb9e)
     embed5 = discord.Embed(title ='💋 Некос:', description='**`+hug (@user)` - Обнять 😜\n `+slap (@user)` - Ударить 😡\n `+kill [@user]` - Убить 🔪\n `+dog` - Собака :dog:\n `+goose` - Гусь :duck:\n `+cat` - Кот 🐱**', color=0x6fdb9e)
@@ -180,6 +180,22 @@ async def wiki(ctx, *, text):
     emb.set_author(name= 'Больше информации тут! Кликай!', url= new_page.url, icon_url= 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1200px-Wikipedia-logo-v2.svg.png')
 
     await ctx.send(embed=emb)
+
+@bot.command()
+async def feedback(ctx, *, arg = None):
+    if arg is None:
+        await ctx.send(embed=discord.Embed(title="Нет аргумента!", description=f"<a:No:719995078059229336> **{ctx.author.mention}**, укажи **сообщение**, которое будет **отоброжатся** в отзыве. <a:No:719995078059229336>", color=0xFF0000))
+    else:
+        emb = discord.Embed(title = 'Ваш отзыв был успешно отправлен!', description = f'Ваш отзыв выглядит так: {arg}', color=0x6fdb9e)
+        emb.set_footer(text='Команда вызвана: {}'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
+        await ctx.send(embed=emb)
+        
+        messagechannel = 724368421910741223
+        channel = ctx.bot.get_channel(messagechannel)
+        
+        embed = discord.Embed(title = 'Новый отзыв!', description = f'Отзыв выглядит так: {arg}', color=0x6fdb9e)
+        embed.set_footer(text='Команда вызвана: {}'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
+        await channel.send(embed=embed)
 
 @bot.command()
 async def user(ctx, Member: discord.Member = None ):

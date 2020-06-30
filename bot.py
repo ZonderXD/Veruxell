@@ -95,7 +95,7 @@ async def botinfo(ctx):
     embed.add_field(name=f'**Версия:**', value="V1.0.0", inline=False)  # Создает строку
     embed.add_field(name=f'**Патч:**', value="1", inline=False)  # Создает строку
     embed.set_thumbnail( url = bot.user.avatar_url)
-    embed.set_footer(text=f"𝙳𝚒𝙻𝚊𝚇#6666 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/a_df4795a8f60fe1ee9dded63559128724.gif?size=1024")
+    embed.set_footer(text=f"Needly#0001 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/a_9a069cce7b003d72a18bc790a36de1ef.gif?size=1024")
     await ctx.send(embed=embed)
 
 @bot.command() # Декоратор команды

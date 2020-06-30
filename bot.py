@@ -89,7 +89,7 @@ async def suggest( ctx , * , agr ):
 @bot.command(aliases=['bot'])
 async def botinfo(ctx):
     embed = discord.Embed(title=f"{ctx.guild.name}", description="Информация о боте **Veruxell#7065**.\n Я был сделан для Вашего удобства,\n Подробнее о командах: **`+help`**", color = 0x00ffff)
-    embed.add_field(name=f'**Меня создал:**', value="`𝙳𝚒𝙻𝚊𝚇#6666`(<@719605055547768894>)", inline=False)  # Создает строку
+    embed.add_field(name=f'**Меня создал:**', value="`Needly#0001`(<@719605055547768894>)", inline=False)  # Создает строку
     embed.add_field(name=f'**Лицензия:**', value="DiscordHosting-V3.5.7", inline=False)  # Создает строку
     embed.add_field(name=f'**Я написан на:**', value="Discord.py", inline=False)  # Создает строку
     embed.add_field(name=f'**Версия:**', value="V1.0.0", inline=False)  # Создает строку

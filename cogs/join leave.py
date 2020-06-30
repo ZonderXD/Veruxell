@@ -43,7 +43,7 @@ class join(commands.Cog):
         channel = self.bot.get_channel(messagechannel)
         hi = discord.Embed(
             title=f"Бот присоединился к серверу.",
-            description=f"**<a:Nitro:719995105016021142> Информация о сервере:\n\n<a:Cat:719995005111894118> Название сервера - `{guild.name}`\n<a:Discord:719995167096176734> ID сервера - `{guild.id}`\n<:Owner:720001653163425822> Владелец сервера - `{guild.owner}`**",
+            description=f"**<a:Nitro:719995105016021142> Информация о сервере:\n\n<a:Cat:719995005111894118> Название сервера - `{guild.name}`\n<a:Discord:719995167096176734> ID сервера - `{guild.id}`\n<:Members:719996296827764786> Участников - `{len(guild.members)}`\n<:Owner:720001653163425822> Владелец сервера - `{guild.owner}`**",
             color=0x800080
         )
         await channel.send(embed=hi)
@@ -54,7 +54,7 @@ class join(commands.Cog):
         channel = self.bot.get_channel(messagechannel)
         buy = discord.Embed(
             title=f"Бот отсоиденился от сервера.",
-            description=f"**<a:Nitro:719995105016021142> Информация о сервере:\n\n<a:Cat:719995005111894118> Название сервера - `{guild.name}`\n<a:Discord:719995167096176734> ID сервера - `{guild.id}`\n<:Owner:720001653163425822> Владелец сервера - `{guild.owner}`**",
+            description=f"**<a:Nitro:719995105016021142> Информация о сервере:\n\n<a:Cat:719995005111894118> Название сервера - `{guild.name}`\n<a:Discord:719995167096176734> ID сервера - `{guild.id}`\n<:Members:719996296827764786> Участников - `{len(guild.members)}`\n<:Owner:720001653163425822> Владелец сервера - `{guild.owner}`**",
             color=0x800080
         )
         await channel.send(embed=buy)

@@ -186,14 +186,14 @@ async def feedback(ctx, *, arg = None):
     if arg is None:
         await ctx.send(embed=discord.Embed(title="Нет аргумента!", description=f"<a:No:719995078059229336> **{ctx.author.mention}**, укажи **сообщение**, которое будет **отоброжатся** в отзыве. <a:No:719995078059229336>", color=0xFF0000))
     else:
-        emb = discord.Embed(title = 'Ваш отзыв был успешно отправлен!', description = f'Ваш отзыв выглядит так: {arg}', color=0x6fdb9e)
+        emb = discord.Embed(title = 'Ваш отзыв был успешно отправлен!', description = f'**Ваш отзыв выглядит так:** {arg}', color=0x6fdb9e)
         emb.set_footer(text='Команда вызвана: {}'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
         await ctx.send(embed=emb)
         
         messagechannel = 724368421910741223
         channel = ctx.bot.get_channel(messagechannel)
         
-        embed = discord.Embed(title = 'Новый отзыв!', description = f'Отзыв выглядит так: {arg}', color=0x6fdb9e)
+        embed = discord.Embed(title = 'Новый отзыв!', description = f'**Отзыв выглядит так:** {arg}', color=0x6fdb9e)
         embed.set_footer(text='Команда вызвана: {}'.format(ctx.author.name), icon_url=ctx.author.avatar_url)
         await channel.send(embed=embed)
 

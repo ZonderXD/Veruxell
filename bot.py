@@ -156,7 +156,7 @@ async def help(ctx):
     embed1 = discord.Embed(title = '⚙ Навигация по командам:\n 🦴 Чтоб посмотреть команды, нажимайте на реакции ниже.\n ❗ Обязательные параметры: `()`\n ❓ Необязательные параметры: `[]`', color=0x6fdb9e )
     embed2 = discord.Embed(title ='💎 Базовые:', description='**``+user [@user]`` - Узнать информацию о пользователе 🎭\n ``+server`` - Узнать информацию о сервере 🧿\n `+bot` - Информация о боте 🤖\n `+avatar [@user]` - Аватар пользователя 🖼\n `+wiki (text)` - Википедия 📖\n `+covid (country)` - Информация о вирусе Covid-19 🦠\n `+invite` - Приглашение бота 👻\n `+suggest (text)` - Идея для бота **', color=0x6fdb9e )
     embed3 = discord.Embed(title ='🎉 Весёлости:', description='**``+coin`` - Бросить монетку 🌈\n ``+math (2*2/2+2-2)`` - Решить пример :infinity:\n `+8ball (question)` - Волшебный шар 🔮\n `+meme` - Рандомный мем 🤣\n `+sapper` - Типичный сапёр ♻\n `+ttt (user)` - Крестики-нолики ⭕\n `+bunting` - Угадай флаг 🏴**', color=0x6fdb9e)
-    embed4 = discord.Embed(title ='🧊 Для админов:', description='**`+say (text)` - Написать текст от лица бота ⚖**', color=0x6fdb9e)
+    embed4 = discord.Embed(title ='🧊 Для админов:', description='**`+say (text)` - Написать текст от лица бота ⚖\n `+say_embed (text)` - Сообщение от лица бота в другом стиле ю**', color=0x6fdb9e)
     embed5 = discord.Embed(title ='💋 Некос:', description='**`+hug (@user)` - Обнять 😜\n `+slap (@user)` - Ударить 😡\n `+kill [@user]` - Убить 🔪\n `+dog` - Собака :dog:\n `+goose` - Гусь :duck:\n `+cat` - Кот 🐱**', color=0x6fdb9e)
     embeds = [embed1, embed2, embed3, embed4, embed5]
     message = await ctx.send(embed=embed1)
@@ -263,8 +263,39 @@ async def __count(ctx, *, args = None):
 
 @bot.command()
 @commands.has_permissions( administrator = True)
-async def say(ctx, *, arg):
-    await ctx.send(f'{arg}')
+async def say(ctx, *, arg=None):
+    if arg is None:
+        await ctx.send(embed=discord.Embed(title="Нет аргумента!", description=f"<a:No:719995078059229336> **{ctx.author.mention}**, укажи **сообщение**, которое хочешь отправить от именни **бота** <a:No:719995078059229336>", color=0xFF0000))
+    else:
+        await ctx.send(f'{arg}')
+
+@say.error
+async def mine_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        e = discord.Embed(title='Нет прав!', color = 0xFF0000)
+        e.description = f'<a:No:719995078059229336> {ctx.author.mention}, у тебя **нет прав**, что-бы использовать эту **команду!** <a:No:719995078059229336>'
+        await ctx.send(embed=e)
+    else:
+        raise error
+
+@bot.command()
+@commands.has_permissions(administrator=True)
+async def say_embed(ctx, *, arg=None):
+    if arg is None:
+        await ctx.send(embed=discord.Embed(title="Нет аргумента!", description=f"<a:No:719995078059229336> **{ctx.author.mention}**, укажи **сообщение**, которое хочешь отправить от именни **бота** <a:No:719995078059229336>", color=0xFF0000))
+    else:
+        embed = discord.Embed(description=f'{arg}', color=0xa43dd8)
+        embed.set_footer(text=f"Needly#0001 © | Все права защищены", icon_url="https://cdn.discordapp.com/avatars/719605055547768894/a_9a069cce7b003d72a18bc790a36de1ef.gif?size=1024")
+        await ctx.send(embed=embed)
+
+@say_embed.error
+async def mine_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        e = discord.Embed(title='Нет прав!', color = 0xFF0000)
+        e.description = f'<a:No:719995078059229336> {ctx.author.mention}, у тебя **нет прав**, что-бы использовать эту **команду!** <a:No:719995078059229336>'
+        await ctx.send(embed=e)
+    else:
+        raise error
 
 @bot.command()
 async def server(ctx):
